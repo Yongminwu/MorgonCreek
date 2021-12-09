@@ -1,0 +1,8 @@
+{
+	"smtphost": "smtp.qq.com",
+	"mailbox": "你的QQ号@qq.com",
+	"auth": "POP3/IMAP/SMTP服务的授权密码", 
+	"startTime": "08:00", 
+	"endTime": "12:00", 
+	"interval": 10
+}

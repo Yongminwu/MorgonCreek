@@ -1,0 +1,15 @@
+{
+  "name": "morgan-golf-teetime",
+  "version": "1.0.0",
+  "description": "Auto fetch teetime of Morgan Creek Golf Club",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Wu",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^6.7.2",
+    "puppeteer": "^11.0.0"
+  }
+}
