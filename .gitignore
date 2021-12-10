@@ -1,0 +1,9 @@
+# Node.js dependencies:
+node_modules
+
+# Git directories and files
+.git
+
+# Editor directories and files
+${tmpdir}
+.vscode
