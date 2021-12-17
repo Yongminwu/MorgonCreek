@@ -89,9 +89,14 @@ var interval = 10;
 
     // 分析符合条件的数据
     let teeweekOfQualify = {
-      nowDate: today(),
+      dates: [],
       teeTime: [[], [], [], [], [], [], [], []],
       total:0
+    }
+    let todayDate = new Date();
+    for (let i = 0; i < 8; i++) {
+      todayDate.setDate(todayDate.getDate() + 1)
+      teeweekOfQualify.dates.push(dateToStr(todayDate));
     }
     for (let i in teeWeek.teeTime) {
       let tw = teeWeek.teeTime[i];
@@ -114,7 +119,12 @@ var interval = 10;
     
     //发送邮件
     if (teeweekOfQualify.total > 0) {
-      infoMail.text = JSON.stringify(teeweekOfQualify).replace('{', '').replace('}', '').replace(/"/g, '');
+      infoMail.text = "There are " + teeweekOfQualify.total + " teetimes.\n";
+      for (let i = 0; i < 8; i++) {
+        if (teeweekOfQualify.teeTime[i].length > 0) {
+          infoMail.text += teeweekOfQualify.dates[i] + ": " + teeweekOfQualify.teeTime[i].toString() + "\n";
+        }
+      }
       console.log(infoMail.text);
       await transporter.sendMail(infoMail);
       // Wait 1 day
@@ -150,10 +160,9 @@ function readParam() {
   })
 }
 
-function today() {
-  var today = new Date();
-  var nowMonth = today.getMonth() + 1;
-  var nowDay = today.getDate();
+function dateToStr(day) {
+  var nowMonth = day.getMonth() + 1;
+  var nowDay = day.getDate();
   var seperator = "/";
   if (nowMonth >= 1 && nowMonth <= 9) {
      nowMonth = "0" + nowMonth;
@@ -162,7 +171,7 @@ function today() {
      nowDay = "0" + nowDay;
   }
 
-  var nowDate = nowMonth + seperator + nowDay + seperator + today.getFullYear();
+  var nowDate = nowMonth + seperator + nowDay + seperator + day.getFullYear();
   //console.log(nowDate);
   return nowDate;
 }
