@@ -74,7 +74,8 @@ var interval = 10;
         let end = resStr.indexOf('<div class="hidden noTeetimeText" style="color: Black; padding-left: 50px; padding-top:50px;">');
         let timeStr = resStr.slice(start, end);
         let teeTime = timeStr.match(/teetime='[0-9]?[0-9]:[0-9][0-9] [AP]M'/g);
-        teeWeek.teeTime.push(teeTime);
+        if (teeTime === null) teeWeek.teeTime.push([]);
+        else teeWeek.teeTime.push(teeTime);
         
         for (let i in teeTime) {
           if (teeTime[i].match(/teetime='[0-9]:/g) != null)
