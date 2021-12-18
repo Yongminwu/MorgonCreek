@@ -49,7 +49,7 @@ var interval = 10;
   page = pages[1];
   while (true) {
     let teeWeek = {
-      nowDate: today(),
+      nowDate: dateToStr(new Date()),
       teeTime: []
     };
     for (let i=1; i<=8; i++) {
